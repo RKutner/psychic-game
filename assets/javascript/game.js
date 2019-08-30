@@ -27,11 +27,11 @@ var letters = [
     "Z"
 ];
 
-var guessedLetters = [];
-var guessesLeft;
-var winCount;
-var lossCount;
-var guessesLeft;
+let guessedLetters = [];
+let guessesLeft=10;
+let winCount=0;
+let lossCount=0;
+
 
 window.onload = gameStart();
 
@@ -43,13 +43,13 @@ function gameStart() {
     currentLetter = 0;
 }
 
-document.getElementById("guessedLetters");
+document.getElementById("guessedLetters").innerHTML= guessedLetters
 
 // Picks a random Letter
 function randomLetter() {
     var letter = letters[Math.floor(Math.random() * letters.length)];
-    console.log(letter);
     currentLetter = letter.toLowerCase();
+    console.log(currentLetter);
 }
 
 randomLetter();
@@ -61,7 +61,7 @@ document.onkeyup = function (event) {
         guessedLetters = [];
         guessesLeft = 10;
         randomLetter();
-    } else if (guessedLetters.length > "0") {
+    } else if (guessedLetters.length <"10") {
         guessedLetters.push(guess);
         guessesLeft--;
     } else {
