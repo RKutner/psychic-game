@@ -43,7 +43,13 @@ function gameStart() {
     currentLetter = 0;
 }
 
-document.getElementById("guessedLetters").innerHTML= guessedLetters
+
+document.getElementById("guessedLetters").innerHTML = "Guessed Letters: " + guessedLetters.toString();
+document.getElementById("remainingGuesses").innerHTML = "Guessed Letters: " + remainingGuesses.toString();
+document.getElementById("winCount").innerHTML = "Guessed Letters: " + winCount.toString();
+document.getElementById("lossCount").innerHTML = "Guessed Letters: " + lossCount.toString();
+
+
 
 // Picks a random Letter
 function randomLetter() {
@@ -52,6 +58,8 @@ function randomLetter() {
     console.log(currentLetter);
 }
 
+
+
 randomLetter();
 
 document.onkeyup = function (event) {
@@ -59,15 +67,27 @@ document.onkeyup = function (event) {
     if (guess === currentLetter) {
         winCount++;
         guessedLetters = [];
-        guessesLeft = 10;
+        document.getElementById("guessedLetters").innerHTML = "Guessed Letters: " + guessedLetters.toString();
+        document.getElementById("remainingGuesses").innerHTML = "Remaining Guesses: " + remainingGuesses.toString();
+        document.getElementById("winCount").innerHTML = "Wins: " + winCount.toString();
+        document.getElementById("lossCount").innerHTML = "Losses: " + lossCount.toString();
+                guessesLeft = 10;
         randomLetter();
-    } else if (guessedLetters.length <"10") {
+    } else if (guessedLetters.length < "10") {
         guessedLetters.push(guess);
-        guessesLeft--;
+        document.getElementById("guessedLetters").innerHTML = "Guessed Letters: " + guessedLetters.toString();
+        document.getElementById("remainingGuesses").innerHTML = "Remaining Guesses: " + remainingGuesses.toString();
+        document.getElementById("winCount").innerHTML = "Wins: " + winCount.toString();
+        document.getElementById("lossCount").innerHTML = "Losses: " + lossCount.toString();
+                guessesLeft--;
     } else {
         lossCount++;
         guessedLetters = [];
-        guessesLeft = 10;
+        document.getElementById("guessedLetters").innerHTML = "Guessed Letters: " + guessedLetters.toString();
+        document.getElementById("remainingGuesses").innerHTML = "Guessed Letters: " + remainingGuesses.toString();
+        document.getElementById("winCount").innerHTML = "Guessed Letters: " + winCount.toString();
+        document.getElementById("lossCount").innerHTML = "Guessed Letters: " + lossCount.toString();
+                guessesLeft = 10;
         randomLetter();
     }
     console.log("guessedLetters " + guessedLetters);
